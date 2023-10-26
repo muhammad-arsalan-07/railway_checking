@@ -7,7 +7,7 @@ import { SecurityModule } from 'src/security/security.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://arsalan:personal@cluster0.f15ef2d.mongodb.net/personal?retryWrites=true&w=majority'), 
+    MongooseModule.forRoot('mongodb+srv://arsalan:personal@cluster0.f15ef2d.mongodb.net/personal'), 
     MongooseModule.forFeature([{ name: Cat.name, schema: CatSchema }]),
     SecurityModule
   ],
