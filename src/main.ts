@@ -6,8 +6,6 @@ async function bootstrap() {
 
   // app.enableCors()
 
-  await app.listen(8000, () => {
-    console.log('app is runinng')
-  });
+  await app.listen(8000, "0.0.0.0");
 }
 bootstrap();
