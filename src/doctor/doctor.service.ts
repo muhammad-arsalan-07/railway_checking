@@ -17,9 +17,9 @@ export class DoctorService {
   async getinfo(userid: string) {
     try {
       const find = await this.doctorModel.findOne({id: new mongoose.Types.ObjectId(userid)})
-      if(find) return {...find.toJSON(), isProfileCompleted: true}
       const find2 = await this.userModel.findById(userid)
-      if(find2) return {...find2.toJSON(), isProfileCompleted : false}
+      if(find2) return {...find2.toJSON(), isProfileCompleted : true}
+      if(find) return {...find.toJSON(), isProfileCompleted: true, role: find2.role}
       throw new NotFoundException("user not found")
     } catch (error) {
       throw error
