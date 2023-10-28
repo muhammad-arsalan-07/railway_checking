@@ -2,14 +2,22 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Cat, CatSchema } from './app.model';
 import { SecurityModule } from 'src/security/security.module';
+import { JwtModule } from '@nestjs/jwt';
+import { DoctorModule } from 'src/doctor/doctor.module';
+import { PatientModule } from 'src/patient/patient.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://arsalan:personal@cluster0.f15ef2d.mongodb.net/personal?retryWrites=true&w=majority'), 
-    MongooseModule.forFeature([{ name: Cat.name, schema: CatSchema }]),
-    SecurityModule
+    MongooseModule.forRoot('mongodb://localhost:27017/new'), 
+    MongooseModule.forFeature(),
+    JwtModule.register({
+      global: true,
+      secret: "docter",
+    }),
+    SecurityModule,
+    DoctorModule,
+    PatientModule
   ],
   controllers: [AppController],
   providers: [AppService],
