@@ -9,7 +9,7 @@ import { PatientModule } from 'src/patient/patient.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://arsalan:personal@cluster0.f15ef2d.mongodb.net/personal'), 
+    MongooseModule.forRoot('mongodb://localhost:27017/new'), 
     MongooseModule.forFeature(),
     JwtModule.register({
       global: true,

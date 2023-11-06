@@ -48,4 +48,13 @@ export class DoctorService {
       throw error
     }
   }
+
+  async alldoctor() {
+    try {
+      const find = await this.doctorModel.find()
+      return find
+    } catch (error) {
+      throw error
+    }
+  }
 }

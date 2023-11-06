@@ -42,4 +42,13 @@ export class DoctorController {
             throw error
         }
     }
+
+    @Get("alldoctor")
+    async alldoctor(@Headers() headers) {
+        try {
+            return this.doctorService.alldoctor()
+        } catch (error) {
+            throw error
+        }
+    }
 }
