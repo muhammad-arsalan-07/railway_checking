@@ -24,15 +24,12 @@ const jaegerExporter = new JaegerExporter({
     },
   });
 //   const traceExporter = jaegerExporter;
-  const traceExporter =
-  process.env.NODE_ENV === `development`
-    ? jaegerExporter
-    : oltpExporter;
+  const traceExporter = oltpExporter;
   
   
   export const otelSDK = new NodeSDK({
     resource: new Resource({
-        [SemanticResourceAttributes.SERVICE_NAME]: `testing`, // update this to a more relevant name for you!
+        [SemanticResourceAttributes.SERVICE_NAME]: `nestjs-otel`, // update this to a more relevant name for you!
       }),
     spanProcessor: new SimpleSpanProcessor(traceExporter),
     instrumentations: [new HttpInstrumentation(), new ExpressInstrumentation(),  new NestInstrumentation(),],
